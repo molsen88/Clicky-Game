@@ -1,0 +1,42 @@
+.navbarStyle  {
+    background-Color: #423D3D;
+    height: 120px;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0 2px 3px #999, 0 2px 3px #999;
+}
+ .list li{
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    font-size: 32px;
+    font-family: 'B612 Mono', monospace;
+    margin-bottom: 10px;
+}
+
+.gameName {
+   
+    width: 18%;
+    text-align: left;
+    color: white;
+    font-family: 'B612 Mono', monospace;
+    
+
+}
+.directions  {
+   
+    width: 60%;
+    text-align: center;
+    color: white;
+    /* font-size: 20px, */
+    font-family: 'B612 Mono', monospace;
+}
+.score  {
+    
+    width: 22%;
+    text-align: right;
+    color: white;
+    /* font-size: 20px */
+    font-family: 'B612 Mono', monospace;
+
+}

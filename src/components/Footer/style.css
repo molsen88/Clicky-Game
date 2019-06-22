@@ -1,0 +1,15 @@
+.footer-style  {
+    background-Color: #423D3D;
+    height: 100px;
+    /* position: fixed; */
+    width: 100%;
+    box-shadow: 0 2px 3px #999, 0 2px 3px #999;
+}
+ .footer-name{
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    font-size: 32px;
+    color: white;
+    font-family: 'B612 Mono', monospace;
+}

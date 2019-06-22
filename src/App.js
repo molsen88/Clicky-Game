@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from "react";
+import Nav from './components/Nav/Nav'
+import Header from './components/Header'
+import Main from './components/Main'
 import './App.css';
+import Footer from './components/Footer/Footer'
+import players from "./players.json"
+import PlayerCard from './components/PlayerCard/PlayerCard';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    players,
+    clickedPlayers: [],
+    score: '0'
+  }
+
+
+
+
+
+
+  render() {
+    return (
+      <div className="App">
+        <Nav score={this.state.score} />
+
+        <Header />
+        <Main />
+        <div className="pictures">
+          {this.state.players.map( player => (
+            <PlayerCard
+
+              id={player.id}
+              key={player.id}
+              name={player.name}
+              image={player.image}
+              position={player.position}
+            />
+          ) )}
+        </div>
+
+        <Footer />
+
+      </div>
+    );
+  }
 }
+
 
 export default App;
