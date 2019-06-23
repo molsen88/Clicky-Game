@@ -1,34 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './style.css'
 
 
 
-function Nav() {
+class Nav extends Component {
+    render() {
+        return (
+            <div>
+                <nav className="navbarStyle">
+                    <ul>
+                        <div className="list">
+                            <li className="gameName">Clicky Game</li>
 
-    return (
-        <div>
-            <navbar className="navbarStyle">
-                <ul>
-                    <div className="list">
-                        <li className="gameName">Clicky Game</li>
+                            <li className="directions">  {this.props.directions}</li>
 
-                        <li className="directions"> Click an image to begin!</li>
-
-                        <li className="score">Score:  | Top Score: </li>
-                    </div>
-                </ul>
-            </navbar>
-        </div >
-    )
+                            <li className="score">Score: {this.props.score}  | Top Score: {this.props.highScore} </li>
+                        </div>
+                    </ul>
+                </nav>
+            </div >
+        )
+    }
 }
-
-
-
-
-
-
-
-
 
 
 
