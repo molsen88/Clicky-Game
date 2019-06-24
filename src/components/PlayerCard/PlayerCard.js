@@ -8,9 +8,9 @@ function PlayerCard( props ) {
 
 
     return (
-        <div className='card'>
+        <div className='card' onClick={props.pictureClick}>
             <div className='img-container'>
-                <img alt={props.name} src={props.image} onClick={props.handleClick} />
+                <img alt={props.name} src={props.image} />
             </div>
             <div className='content'>
                 {/* <ul>

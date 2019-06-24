@@ -18,11 +18,60 @@ class App extends Component {
     directions: "Click an image to begin"
   }
 
-  handleClick( e ) {
-    e.preventDefault();
-    const currentPlayer = e.target.alt;
+  pictureClick = event => {
+
+    const currentPlayer = event.target.alt;
     console.log( currentPlayer + " was clicked" )
+    const playerAlreadyClicked =
+      this.state.clickedPlayers.indexOf( currentPlayer ) > -1;
+    if ( playerAlreadyClicked ) {
+      this.setState( {
+        players: this.state.players.sort( function ( a, b ) {
+          return 0.5 - Math.random();
+        } ),
+
+        directions: "Sorry! Try Again...",
+        highScore: ( this.state.score > this.state.highScore ) ? this.state.score : this.state.highScore,
+        clickedPlayers: [],
+        score: 0
+      } )
+    }
+    else {
+      this.setState(
+        {
+          players: this.state.players.sort( function ( a, b ) {
+            return 0.5 - Math.random();
+          } ),
+          clickedPlayers: this.state.clickedPlayers.concat(
+            currentPlayer
+          ),
+          directions: "Good job",
+          score: this.state.score + 1
+        },
+        //if you get all 12 fish corrent you get a congrats message and the game resets        
+        () => {
+          if ( this.state.score === 18 ) {
+            // alert("You guessed correctly!");
+            this.setState( {
+              car: this.state.players.sort( function ( a, b ) {
+                return 0.5 - Math.random();
+              } ),
+              directions: "Nice Job! You Win...!",
+              highScore: ( this.state.score > this.state.highScore ) ? this.state.score : this.state.highScore,
+              clickedPlayers: [],
+              score: 0
+            } );
+          }
+        } )
+    }
   }
+
+
+
+
+
+
+
 
 
 
@@ -40,7 +89,7 @@ class App extends Component {
         <div className="pictures">
           {this.state.players.map( player => (
             <PlayerCard
-              handleClick={this.handleClick}
+              pictureClick={this.pictureClick}
               id={player.id}
               key={player.id}
               name={player.name}
