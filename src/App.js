@@ -18,51 +18,37 @@ class App extends Component {
     directions: "Click an image to begin"
   }
 
-  pictureClick = event => {
+  pictureClick = ( event ) => {
 
     const currentPlayer = event.target.alt;
     console.log( currentPlayer + " was clicked" )
     const playerAlreadyClicked =
       this.state.clickedPlayers.indexOf( currentPlayer ) > -1;
+    console.log( playerAlreadyClicked )
+
     if ( playerAlreadyClicked ) {
+
       this.setState( {
-        players: this.state.players.sort( function ( a, b ) {
+
+        players: this.state.players.sort( function () {
           return 0.5 - Math.random();
         } ),
 
-        directions: "Sorry! Try Again...",
-        highScore: ( this.state.score > this.state.highScore ) ? this.state.score : this.state.highScore,
-        clickedPlayers: [],
-        score: 0
+        score: 0,
+        directions: "You lost!!",
       } )
     }
     else {
-      this.setState(
-        {
-          players: this.state.players.sort( function ( a, b ) {
-            return 0.5 - Math.random();
-          } ),
-          clickedPlayers: this.state.clickedPlayers.concat(
-            currentPlayer
-          ),
-          directions: "Good job",
-          score: this.state.score + 1
-        },
-        //if you get all 12 fish corrent you get a congrats message and the game resets        
-        () => {
-          if ( this.state.score === 18 ) {
-            // alert("You guessed correctly!");
-            this.setState( {
-              car: this.state.players.sort( function ( a, b ) {
-                return 0.5 - Math.random();
-              } ),
-              directions: "Nice Job! You Win...!",
-              highScore: ( this.state.score > this.state.highScore ) ? this.state.score : this.state.highScore,
-              clickedPlayers: [],
-              score: 0
-            } );
-          }
-        } )
+      this.setState( {
+        score: this.state.score + 1,
+        directions: "Good choice",
+        clickedPlayers: [],
+        players: this.state.players.sort( function ( a, b ) {
+          return 0.5 - Math.random();
+        } ),
+        highScore: ( this.state.score > this.state.highScore )
+
+      } )
     }
   }
 
