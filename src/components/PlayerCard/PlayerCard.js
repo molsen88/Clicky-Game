@@ -10,7 +10,7 @@ function PlayerCard( props ) {
     return (
         <div className='card' onClick={props.pictureClick}>
             <div className='img-container'>
-                <img alt={props.name} src={props.image} />
+                <img alt={props.id} src={props.image} />
             </div>
             <div className='content'>
                 {/* <ul>

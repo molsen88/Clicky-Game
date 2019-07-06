@@ -15,36 +15,49 @@ class App extends Component {
     clickedPlayers: [],
     score: 0,
     highScore: 0,
-    directions: "Click an image to begin"
+    directions: "Click an image to begin",
+    playerAlreadyClicked: false
+
+
   }
 
-  pictureClick = ( event ) => {
+
+  pictureClick = event => {
 
     const currentPlayer = event.target.alt;
     console.log( currentPlayer + " was clicked" )
+
     const playerAlreadyClicked =
       this.state.clickedPlayers.indexOf( currentPlayer ) > -1;
-    console.log( playerAlreadyClicked )
+
+    console.log( playerAlreadyClicked, this.state.clickedPlayers )
+
 
     if ( playerAlreadyClicked ) {
 
+      console.log( this.state.clickedPlayers )
       this.setState( {
+        playerAlreadyClicked: true,
 
+        clickedPlayers: [],
         players: this.state.players.sort( function () {
           return 0.5 - Math.random();
         } ),
-
         score: 0,
         directions: "You lost!!",
+        // playerAlreadyClicked: true
       } )
     }
+
     else {
       this.setState( {
         score: this.state.score + 1,
+        playerAlreadyClicked: true,
         directions: "Good choice",
         clickedPlayers: [],
         players: this.state.players.sort( function ( a, b ) {
           return 0.5 - Math.random();
+
         } ),
         highScore: ( this.state.score > this.state.highScore )
 
@@ -52,22 +65,13 @@ class App extends Component {
     }
   }
 
-
-
-
-
-
-
-
-
-
-
   render() {
     return (
       <div className="App">
         <Nav score={this.state.score}
           directions={this.state.directions}
           highScore={this.state.highScore}
+
         />
 
         <Header />
@@ -80,8 +84,6 @@ class App extends Component {
               key={player.id}
               name={player.name}
               image={player.image}
-
-              position={player.position}
             />
           ) )}
         </div>
