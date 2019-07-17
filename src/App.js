@@ -16,37 +16,41 @@ class App extends Component {
     score: 0,
     highScore: 0,
     directions: "Click an image to begin",
-    playerAlreadyClicked: false
-
-
+    playerAlreadyClicked: true
   }
-
 
   pictureClick = event => {
 
     const currentPlayer = event.target.alt;
     console.log( currentPlayer + " was clicked" )
-
-    const playerAlreadyClicked =
+    // this.state.clickedPlayers.push( currentPlayer )
+    let playerAlreadyClicked =
       this.state.clickedPlayers.indexOf( currentPlayer ) > -1;
+    this.state.clickedPlayers.push( currentPlayer )
+
 
     console.log( playerAlreadyClicked, this.state.clickedPlayers )
 
 
     if ( playerAlreadyClicked ) {
 
-      console.log( this.state.clickedPlayers )
-      this.setState( {
-        playerAlreadyClicked: true,
 
-        clickedPlayers: [],
+      this.setState( {
+
+        // clickedPlayers: [],
         players: this.state.players.sort( function () {
           return 0.5 - Math.random();
         } ),
         score: 0,
         directions: "You lost!!",
-        // playerAlreadyClicked: true
+        playerAlreadyClicked: true,
+        // highScore: ( this.state.score )
       } )
+      this.setState( {
+        clickedPlayers: [],
+        highScore: this.state.score
+      } )
+
     }
 
     else {
@@ -54,7 +58,7 @@ class App extends Component {
         score: this.state.score + 1,
         playerAlreadyClicked: true,
         directions: "Good choice",
-        clickedPlayers: [],
+        // clickedPlayers: [],
         players: this.state.players.sort( function ( a, b ) {
           return 0.5 - Math.random();
 

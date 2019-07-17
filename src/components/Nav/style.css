@@ -1,6 +1,6 @@
 .navbarStyle  {
     background-Color: #423D3D;
-    height: 100px;
+    height: 150px;
     position: fixed;
     width: 100%;
     box-shadow: 0 2px 3px #999, 0 2px 3px #999;
@@ -37,6 +37,13 @@
     text-align: right;
     color: white;
     /* font-size: 20px */
+    font-family: 'B612 Mono', monospace;
+}
+.high-score{
+    width: 22%;
+    text-align: right;
+    color: white;
+    font-size: 20px;
     font-family: 'B612 Mono', monospace;
 
 }

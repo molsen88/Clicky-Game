@@ -14,7 +14,8 @@ class Nav extends Component {
 
                             <li className="directions">  {this.props.directions}</li>
 
-                            <li className="score">Score: {this.props.score}  | High Score: {this.props.highScore} </li>
+                            <li className="score">Score: {this.props.score}</li>
+                            <li className="high-score"> High Score: {this.props.highScore}</li>
                         </div>
                     </ul>
                 </nav>
