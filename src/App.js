@@ -14,7 +14,7 @@ class App extends Component {
     players,
     clickedPlayers: [],
     score: 0,
-    highScore: 0,
+    // highScore: 0,
     directions: "Click an image to begin",
     playerAlreadyClicked: true
   }
@@ -37,18 +37,17 @@ class App extends Component {
 
       this.setState( {
 
-        // clickedPlayers: [],
         players: this.state.players.sort( function () {
           return 0.5 - Math.random();
         } ),
         score: 0,
         directions: "You lost!!",
         playerAlreadyClicked: true,
-        // highScore: ( this.state.score )
+        highScore: ( this.state.score )
       } )
       this.setState( {
         clickedPlayers: [],
-        highScore: this.state.score
+        highScore: ( this.state.score )
       } )
 
     }
@@ -58,14 +57,15 @@ class App extends Component {
         score: this.state.score + 1,
         playerAlreadyClicked: true,
         directions: "Good choice",
-        // clickedPlayers: [],
+
         players: this.state.players.sort( function ( a, b ) {
           return 0.5 - Math.random();
 
         } ),
-        highScore: ( this.state.score > this.state.highScore )
+
 
       } )
+
     }
   }
 
